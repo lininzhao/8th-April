@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //age in days
+        function ageInDays(){
+            var bornYear=parseInt(prompt('when were you born'));
+            var date=new Date();
+            var year=date.getFullYear();
+            var days=0;
+            var count=0;
+            //判断中间有没有闰年
+            for(let i=bornYear;i<=year;i++){
+                if(i%4==0 &&i%100!=0 || i%100==0){
+                   var dayInYear=366;
+                    days+=dayInYear;//统计出来经过闰年的天数；
+                    count++;//统计出来经过闰年的个数;
+                }
+            }
+            var old=year-bornYear-count;
+            var daysOfAge=old*365+days;
+            console.log(daysOfAge);
+        }
+        ageInDays();
+    </script>
+</body>
+</html>

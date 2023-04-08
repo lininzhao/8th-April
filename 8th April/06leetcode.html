@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //一个数组【1，2，3】输出【1，2，4】
+        var plusOne = function(digits) {
+            //先将数组中的数字长度拿到看看是几位数
+            var num=digits.length;//知道是几位数
+            var sum=0;
+            //拿到每位数
+            for(let i=0;i<digits.length;i++){
+                sum+=digits[i]*10**(digits.length-i-1);
+                //**表示次方 或者Math.pow(10,digits.length-1-i)
+            }
+            sum+=1;
+            //将数字转化为数组
+            var newArr=[];
+            for(let a=0;a<digits.length;a++){
+                let digit=parseInt(sum/10**(num-a-1),10)%10;
+                newArr.push(digit);
+            }
+            if(newArr[0]==0){
+                newArr.unshift(1);
+            }
+            return newArr;
+};
+console.log(plusOne([9,9,9]));
+
+
+//另一种方法
+function arr(digits){
+    for(var j=digits.length-1;j>=0;j--){
+    if(digits[j]<9){
+        digits[j]++;
+        return digits;
+    }else{
+        digits[j]=0;
+    }
+}
+digits.unshift(1);
+return digits;
+}
+console.log(arr([1,2,3]));
+    </script>
+</body>
+</html>
